@@ -1,16 +1,16 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using FreshMvvm;
+using PropertyChanged;
 using RIB.XamarinExamples.Models;
 using RIB.XamarinExamples.Services;
 using Xamarin.Forms;
 
 namespace RIB.XamarinExamples.PageModels
 {
+    [AddINotifyPropertyChangedInterface]
     public class MyTablePageModel : FreshBasePageModel
     {
         private readonly IDataService _service;

@@ -29,58 +29,56 @@
                 <dataGrid:DataGrid.HeaderLabelStyle>
                     <Style TargetType="Label">
                         <Setter Property="FontSize" Value="25" />
-                        <Setter Property="FontFamily" Value="SourceSansPro-SemiBold.ttf#SourceSansPro-SemiBold" />
                         <Setter Property="TextColor" Value="DarkBlue" />
-                        <Setter Property="Margin" Value="5,0" />
-                        <Setter Property="HorizontalTextAlignment" Value="Center" />
+                        <Setter Property="Padding" Value="5" />
                     </Style>
                 </dataGrid:DataGrid.HeaderLabelStyle>
 
                 <dataGrid:DataGrid.NoDataView>
-                    <Label Text="No data to show" FontSize="18"/>
+                    <Label Text="No data to show" FontSize="18" />
                 </dataGrid:DataGrid.NoDataView>
 
                 <dataGrid:DataGrid.Columns>
 
-                        <dataGrid:ColumnCollection >
+                    <dataGrid:ColumnCollection>
 
-                            <dataGrid:DataGridColumn Title="Name" PropertyName="Name" Width=".2*" SortingEnabled="True">
+                        <dataGrid:DataGridColumn Title="Name" PropertyName="Name" Width="1*" SortingEnabled="True">
                                 <dataGrid:DataGridColumn.CellTemplate>
                                     <DataTemplate >
                                         <ContentView >
-                                            <Label Text="{Binding .}" FontSize="18" HorizontalTextAlignment="Center"/>
+                                            <Label Text="{Binding .}" FontSize="18" Padding="5" />
                                         </ContentView>
                                     </DataTemplate>
                                 </dataGrid:DataGridColumn.CellTemplate>
                             </dataGrid:DataGridColumn>
-                            <dataGrid:DataGridColumn Title="Id" PropertyName="Id" Width=".3*" SortingEnabled="True"  >
+                            <dataGrid:DataGridColumn Title="Id" PropertyName="Id" Width="1*" SortingEnabled="True"  >
                                 <dataGrid:DataGridColumn.CellTemplate>
                                     <DataTemplate>
                                         <ContentView>
-                                            <Label Text="{Binding}" Margin="5,0" FontSize="18" HorizontalTextAlignment="Center"/>
+                                            <Label Text="{Binding .}" Margin="5,0" FontSize="18" Padding="5"/>
                                         </ContentView>
                                     </DataTemplate>
                                 </dataGrid:DataGridColumn.CellTemplate>
                             </dataGrid:DataGridColumn>
-                            <dataGrid:DataGridColumn Title="Created" PropertyName="DateCreated" Width=".3*" SortingEnabled="True"  >
+                            <dataGrid:DataGridColumn Title="Created" PropertyName="DateCreated" Width="1*" SortingEnabled="True"  >
                                 <dataGrid:DataGridColumn.CellTemplate>
                                     <DataTemplate>
                                         <ContentView>
-                                            <Label Text="{Binding ., StringFormat='{0:dd/MM/yyyy}'}" Margin="5,0" FontSize="18" HorizontalTextAlignment="Center"/>
+                                            <Label Text="{Binding ., StringFormat='{0:dd/MM/yyyy}'}" Margin="5,0" FontSize="18" Padding="5" />
                                         </ContentView>
                                     </DataTemplate>
                                 </dataGrid:DataGridColumn.CellTemplate>
                             </dataGrid:DataGridColumn>
-                            <dataGrid:DataGridColumn Title="License" PropertyName="LicenseId" Width=".3*" SortingEnabled="True"  >
+                            <dataGrid:DataGridColumn Title="License" PropertyName="LicenseId" Width="1*" SortingEnabled="True"  >
                                 <dataGrid:DataGridColumn.CellTemplate>
                                     <DataTemplate>
                                         <ContentView>
-                                            <Label Text="{Binding .}" Margin="5,0" FontSize="18" HorizontalTextAlignment="Center"/>
+                                            <Label Text="{Binding .}" Margin="5,0" FontSize="18" Padding="5"/>
                                         </ContentView>
                                     </DataTemplate>
                                 </dataGrid:DataGridColumn.CellTemplate>
                             </dataGrid:DataGridColumn>
-                            <dataGrid:DataGridColumn Title="" PropertyName="Id" Width=".3*" SortingEnabled="False" >
+                            <dataGrid:DataGridColumn Title="" PropertyName="Id" Width="1*" SortingEnabled="False" >
                                 <dataGrid:DataGridColumn.CellTemplate >
                                     <DataTemplate>
                                         <ContentView>
@@ -88,7 +86,7 @@
                                                 <Button Text="Delete" 
                                                         CornerRadius="10"
                                                         FontSize="12"
-                                                        Command="{Binding Source={x:Reference DataGrid}, Path=BindingContext.DeleteCmd}" CommandParameter="{Binding .}"  />
+                                                        Command="{Binding Source={x:Reference MyDataGrid}, Path=BindingContext.DeleteCmd}" CommandParameter="{Binding .}"  />
                                             </StackLayout>
                                         </ContentView>
                                     </DataTemplate>
