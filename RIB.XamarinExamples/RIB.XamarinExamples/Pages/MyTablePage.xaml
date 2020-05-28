@@ -1,0 +1,113 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:dataGrid="clr-namespace:Xamarin.Forms.DataGrid;assembly=Xamarin.Forms.DataGrid"
+             mc:Ignorable="d"
+             x:Class="RIB.XamarinExamples.Pages.MyTablePage"
+             Title="My Table">
+    <ContentPage.Content>
+        <Grid Margin="100,50">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <dataGrid:DataGrid Grid.Row="0"
+                               ItemsSource="{Binding Customers}"
+                               SelectionEnabled="False"
+                               RowHeight="45" HeaderHeight="40"
+                               BorderColor="White"
+                               HeaderBordersVisible="False"
+                               Margin="0,0,20,0"
+                               x:Name="MyDataGrid">
+
+                <x:Arguments>
+                    <ListViewCachingStrategy>RetainElement</ListViewCachingStrategy>
+                </x:Arguments>
+                <dataGrid:DataGrid.HeaderLabelStyle>
+                    <Style TargetType="Label">
+                        <Setter Property="FontSize" Value="25" />
+                        <Setter Property="FontFamily" Value="SourceSansPro-SemiBold.ttf#SourceSansPro-SemiBold" />
+                        <Setter Property="TextColor" Value="DarkBlue" />
+                        <Setter Property="Margin" Value="5,0" />
+                        <Setter Property="HorizontalTextAlignment" Value="Center" />
+                    </Style>
+                </dataGrid:DataGrid.HeaderLabelStyle>
+
+                <dataGrid:DataGrid.NoDataView>
+                    <Label Text="No data to show" FontSize="18"/>
+                </dataGrid:DataGrid.NoDataView>
+
+                <dataGrid:DataGrid.Columns>
+
+                        <dataGrid:ColumnCollection >
+
+                            <dataGrid:DataGridColumn Title="Name" PropertyName="Name" Width=".2*" SortingEnabled="True">
+                                <dataGrid:DataGridColumn.CellTemplate>
+                                    <DataTemplate >
+                                        <ContentView >
+                                            <Label Text="{Binding .}" FontSize="18" HorizontalTextAlignment="Center"/>
+                                        </ContentView>
+                                    </DataTemplate>
+                                </dataGrid:DataGridColumn.CellTemplate>
+                            </dataGrid:DataGridColumn>
+                            <dataGrid:DataGridColumn Title="Id" PropertyName="Id" Width=".3*" SortingEnabled="True"  >
+                                <dataGrid:DataGridColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <ContentView>
+                                            <Label Text="{Binding}" Margin="5,0" FontSize="18" HorizontalTextAlignment="Center"/>
+                                        </ContentView>
+                                    </DataTemplate>
+                                </dataGrid:DataGridColumn.CellTemplate>
+                            </dataGrid:DataGridColumn>
+                            <dataGrid:DataGridColumn Title="Created" PropertyName="DateCreated" Width=".3*" SortingEnabled="True"  >
+                                <dataGrid:DataGridColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <ContentView>
+                                            <Label Text="{Binding ., StringFormat='{0:dd/MM/yyyy}'}" Margin="5,0" FontSize="18" HorizontalTextAlignment="Center"/>
+                                        </ContentView>
+                                    </DataTemplate>
+                                </dataGrid:DataGridColumn.CellTemplate>
+                            </dataGrid:DataGridColumn>
+                            <dataGrid:DataGridColumn Title="License" PropertyName="LicenseId" Width=".3*" SortingEnabled="True"  >
+                                <dataGrid:DataGridColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <ContentView>
+                                            <Label Text="{Binding .}" Margin="5,0" FontSize="18" HorizontalTextAlignment="Center"/>
+                                        </ContentView>
+                                    </DataTemplate>
+                                </dataGrid:DataGridColumn.CellTemplate>
+                            </dataGrid:DataGridColumn>
+                            <dataGrid:DataGridColumn Title="" PropertyName="Id" Width=".3*" SortingEnabled="False" >
+                                <dataGrid:DataGridColumn.CellTemplate >
+                                    <DataTemplate>
+                                        <ContentView>
+                                            <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Padding="4">
+                                                <Button Text="Delete" 
+                                                        CornerRadius="10"
+                                                        FontSize="12"
+                                                        Command="{Binding Source={x:Reference DataGrid}, Path=BindingContext.DeleteCmd}" CommandParameter="{Binding .}"  />
+                                            </StackLayout>
+                                        </ContentView>
+                                    </DataTemplate>
+                                </dataGrid:DataGridColumn.CellTemplate>
+                            </dataGrid:DataGridColumn>
+
+                        </dataGrid:ColumnCollection>
+
+                    </dataGrid:DataGrid.Columns>
+
+                <dataGrid:DataGrid.RowsBackgroundColorPalette>
+                    <dataGrid:PaletteCollection>
+                        <Color>#F2F2F2</Color>
+                        <Color>#FFFFFF</Color>
+                    </dataGrid:PaletteCollection>
+                </dataGrid:DataGrid.RowsBackgroundColorPalette>
+
+            </dataGrid:DataGrid>
+
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
